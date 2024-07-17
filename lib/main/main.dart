@@ -62,4 +62,6 @@ class SplashScreen extends StatelessWidget {
     );
   }
 }
-//asdasd
+//C:\Users\pc\AndroidStudioProjects\wordapp>git add .  <- 터미널 위치 가고 이렇게 해야 저장
+//C:\Users\pc\AndroidStudioProjects\wordapp>git commit -m "7/18일 처음" <-
+//C:\Users\pc\AndroidStudioProjects\wordapp>git push
