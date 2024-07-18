@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:ui'; // 블러 효과를 추가하기 위해 필요
 import 'package:wordapp/sub/appbar_search.dart'; // AppbarMore 위젯을 가져오는 import 문 추가
-import 'package:go_router/go_router.dart';
-
 
 void main() {
   runApp(MyApp());
@@ -13,13 +11,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: EventsListScreen(), // EventsListScreen을 메인 화면으로 설정
+      home: Eve13(), // EventsListScreen을 메인 화면으로 설정
     );
   }
 }
 
 // EventsListScreen 클래스는 이벤트 리스트를 보여주는 화면입니다.
-class EventsListScreen extends StatelessWidget {
+class Eve13 extends StatelessWidget {
   final List<Event> events = [
     Event(
       date: 'Wed, Apr 28 • 5:30 PM',
@@ -75,8 +73,23 @@ class EventsListScreen extends StatelessWidget {
             children: [
               SizedBox(width: 24),
               Image.asset('assets/icons/search_blue.png', width: 30, height: 30),
-              SizedBox(width: 3),
-              Image.asset('assets/icons/search_tranparent.png', width: 140, height: 80),
+              SizedBox(width: 10),
+              // TextField 추가
+              Container(
+                width: 140, // 원하는 너비로 설정
+                child: TextField(
+                  decoration: InputDecoration(
+                    hintText: ' Search...',
+                    hintStyle: TextStyle(
+                      fontSize: 27, // 힌트 텍스트 크기 설정
+                      color: Colors.grey[400],
+                      fontWeight: FontWeight.w300,
+                    ),
+                    border: InputBorder.none,
+                    contentPadding: EdgeInsets.symmetric(vertical: 10), // 패딩 설정
+                  ),
+                ),
+              ),
               SizedBox(width: 82),
               Stack(
                 children: [

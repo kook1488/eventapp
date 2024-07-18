@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'dart:ui'; // 블러 효과를 추가하기 위해 필요
 import 'package:wordapp/sub/appbar_more2.dart'; // AppbarMore 위젯을 가져오는 import 문 추가
@@ -11,13 +12,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: EventsListScreen(), // EventsListScreen을 메인 화면으로 설정
+      home: Eve13(), // Eve13을 메인 화면으로 설정
     );
   }
 }
 
+
+// MyApp 클래스는 애플리케이션의 루트 위젯입니다.
+
 // EventsListScreen 클래스는 이벤트 리스트를 보여주는 화면입니다.
-class EventsListScreen extends StatelessWidget {
+class Eve13 extends StatelessWidget {
   final List<Event> events = [
     Event(
       date: 'Wed, Apr 28 • 5:30 PM',

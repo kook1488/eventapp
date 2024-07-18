@@ -1,21 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:wordapp/sub/appbar_more.dart'; // AppbarMore 위젯을 가져오는 import 문 추가
 import 'package:wordapp/sub/appbar_default.dart'; // AppbarDefault 위젯을 가져오는 import 문 추가
 
-bool activeBtn = false;
 
 void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatefulWidget {
-  MyApp({super.key});
-
+// MyApp 클래스는 애플리케이션의 루트 위젯입니다.
+class MyApp extends StatelessWidget {
   @override
-  State<MyApp> createState() => _MyAppState();
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Eve14(), // EventsListScreen을 메인 화면으로 설정
+    );
+  }
 }
 
-class _MyAppState extends State<MyApp> {
+// Eve14 클래스 정의
+class Eve14 extends StatefulWidget {
+  const Eve14({super.key});
+
+  @override
+  State<Eve14> createState() => _Event1State();
+}
+
+class _Event1State extends State<Eve14> {
+
+  bool activeBtn = false;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -131,30 +145,35 @@ class _MyAppState extends State<MyApp> {
 
 
 
-              Stack(
-                alignment: Alignment.center,
-                children: [
-                  Image.asset(
-                    'assets/images/Group18177.png',
-                    fit: BoxFit.cover, // 이미지를 화면에 맞게 조정
-                  ),
-
-                  Container(
-                    alignment: Alignment.topCenter,
-                    height: 30,
-                    child:
-                    Text(
-                      'EXPLORE EVENTS',
-                      style: TextStyle(
-
-                        fontSize: 16,
-                        color: Colors.white, // 텍스트 색상을 흰색으로 설정
-                        fontWeight: FontWeight.bold,
-                      ),
-
+              GestureDetector(
+                onTap: (){
+                  context.pushNamed("/event2");
+                },
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    Image.asset(
+                      'assets/images/Group18177.png',
+                      fit: BoxFit.cover, // 이미지를 화면에 맞게 조정
                     ),
-                  ),
-                ],
+
+                    Container(
+                      alignment: Alignment.topCenter,
+                      height: 30,
+                      child:
+                      Text(
+                        'EXPLORE EVENTS',
+                        style: TextStyle(
+
+                          fontSize: 16,
+                          color: Colors.white, // 텍스트 색상을 흰색으로 설정
+                          fontWeight: FontWeight.bold,
+                        ),
+
+                      ),
+                    ),
+                  ],
+                ),
               ),
 
             ],
@@ -164,3 +183,4 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
+

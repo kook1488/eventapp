@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:wordapp/sub/styles.dart';
+import 'package:go_router/go_router.dart';
 
 class AppbarMore extends StatelessWidget {
   const AppbarMore({super.key});
@@ -11,12 +13,21 @@ class AppbarMore extends StatelessWidget {
       child: Row(
 
         children: [
-          Container(
+
+          // GestureDetector를 추가하여 뒤로가기 기능을 구현
+          GestureDetector(
+          onTap: (){
+            if (context.canPop()) {
+              context.pop();
+             }
+            },
+          child: Container(
             margin: EdgeInsets.only(left: 24, top: 3),
             child:
-            Icon(
-             Icons.arrow_back,
-             size: 26,
+              Icon(
+                Icons.arrow_back,
+                size: 26,
+          ),
           ),
           ),
 
@@ -53,3 +64,19 @@ class AppbarMore extends StatelessWidget {
     );
   }
 }
+// 이거로 에로우백 감싸야 뒤로가기가 고라우터로 가능하다
+// GestureDetector(
+// onTap: (){
+// if (context.canPop()) {
+// context.pop();
+// }
+// },
+// child: Container(
+// margin: EdgeInsets.only(left: 24, top: 3),
+// child:
+// Icon(
+// Icons.arrow_back,
+// size: 26,
+// ),
+// ),
+// ),
