@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:wordapp/sub/appbar_eve13.dart';
 import 'dart:ui'; // 블러 효과를 추가하기 위해 필요
-import 'package:wordapp/sub/appbar_search.dart'; // AppbarMore 위젯을 가져오는 import 문 추가
+
 
 void main() {
   runApp(MyApp());
@@ -63,7 +64,8 @@ class Eve13 extends StatelessWidget {
       backgroundColor: Colors.white, // 전체 배경을 흰색으로 설정
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: const AppbarSearch(), // AppbarMore 위젯을 AppBar의 title로 사용
+        title: const Appbar_eve13(), // AppbarMore 위젯을 AppBar의 title로 사용
+        toolbarHeight: 50,
       ),
       // ListView.builder를 사용하여 이벤트 목록을 동적으로 생성
       body: Column(

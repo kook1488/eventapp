@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:wordapp/sub/appbar_more.dart'; // AppbarMore 위젯을 가져오는 import 문 추가
-import 'package:wordapp/sub/appbar_default.dart'; // AppbarDefault 위젯을 가져오는 import 문 추가
+
+import 'package:wordapp/sub/appbar_default.dart';
+import 'package:wordapp/sub/appbar_eve14.dart';
 
 
 void main() {
   runApp(MyApp());
 }
 
-// MyApp 클래스는 애플리케이션의 루트 위젯입니다.
+//MyApp 클래스는 애플리케이션의 루트 위젯입니다.
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Eve14(), // EventsListScreen을 메인 화면으로 설정
+      home: Eve14(), // Eve14을 메인 화면으로 설정
     );
   }
 }
@@ -45,7 +46,9 @@ class _Event1State extends State<Eve14> {
 
               Column(
                 children: [
-                  const AppbarMore(),
+
+                  const Appbar_eve14(), //앱 바 사용
+
                   Padding(
                     padding: const EdgeInsets.only(top: 10),
                     child: Center(
@@ -145,10 +148,11 @@ class _Event1State extends State<Eve14> {
 
 
 
-              GestureDetector(
+              GestureDetector(//라우터로 이동
                 onTap: (){
-                  context.pushNamed("/event2");
+                  context.go("/eve15");
                 },
+
                 child: Stack(
                   alignment: Alignment.center,
                   children: [
@@ -156,6 +160,8 @@ class _Event1State extends State<Eve14> {
                       'assets/images/Group18177.png',
                       fit: BoxFit.cover, // 이미지를 화면에 맞게 조정
                     ),
+
+
 
                     Container(
                       alignment: Alignment.topCenter,

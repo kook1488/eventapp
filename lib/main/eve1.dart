@@ -9,51 +9,51 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'EventHub',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: SplashScreen(),
+      home: Eve1(),
     );
   }
 }
 
-class SplashScreen extends StatelessWidget {
+class Eve1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: [
           Positioned(
-            top: -50,
-            left: -50,
+            top: 455,
+            left: 150,
             child: Image.asset(
-              'assets/images/eve1/1eve_image2.png',
-              width: 600,
-              height: 600,
+              'assets/images/1eve_image2.png',
+              width: 300,
+              height: 370,
               fit: BoxFit.cover,
             ),
           ),
+
           Positioned(
-            bottom: -50,
-            right: -50,
+            bottom: 580,
+            right: 0,
             child: Image.asset(
-              'assets/images/eve1/1eve_image3.png',
-              width: 3,
-              height: 3,
+              'assets/images/1eve_image3.png',
+              width: 250,
+              height: 250,
               fit: BoxFit.cover,
             ),
           ),
-          // Positioned(
-          //   bottom: 20,
-          //   left: 50,
-          //   child: Image.asset(
-          //     'assets/images/eve1/1eve_image4.png',
-          //     width: 1,
-          //     height: 1,
-          //     fit: BoxFit.cover,
-          //   ),
-          // ),
+
+          Positioned(
+            bottom: 0,
+            right: 200,
+            child: Image.asset(
+              'assets/images/1eve_image4.png',
+              width: 200,
+              height: 200,
+              fit: BoxFit.cover,
+            ),
+          ),
+
+
           Center(
             child: Image.asset(
               'assets/images/1eve_image.png',
@@ -61,6 +61,7 @@ class SplashScreen extends StatelessWidget {
               width: 240,  // 이미지 너비
             ),
           ),
+
         ],
       ),
     );

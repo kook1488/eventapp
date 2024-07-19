@@ -1,7 +1,8 @@
 
 import 'package:flutter/material.dart';
+import 'package:wordapp/sub/appbar_eve15.dart';
 import 'dart:ui'; // 블러 효과를 추가하기 위해 필요
-import 'package:wordapp/sub/appbar_more2.dart'; // AppbarMore 위젯을 가져오는 import 문 추가
+// AppbarMore 위젯을 가져오는 import 문 추가
 
 void main() {
   runApp(MyApp());
@@ -65,79 +66,93 @@ class Eve15 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white, // 전체 배경을 흰색으로 설정
-      appBar: AppBar(
-        title: const AppbarMore2(), // AppbarMore 위젯을 AppBar의 title로 사용
-      ),
-      // ListView.builder를 사용하여 이벤트 목록을 동적으로 생성
-      body: ListView.builder(
-        itemCount: events.length,
-        itemBuilder: (context, index) {
-          final event = events[index];
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 8.0),
-            child: Card( // 이벤트 카드를 Card 위젯으로 래핑
-              color: Colors.transparent, // 카드의 배경을 투명으로 설정
-              margin: EdgeInsets.zero,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(10.0),
-                child: BackdropFilter(
-                  filter: ImageFilter.blur(sigmaX: 0, sigmaY: 5), // 블러 효과 적용
-                  child: Container( // 고정된 높이를 설정하기 위해 Container 사용
-                    decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(1), // 카드의 배경을 흰색으로 설정
+
+      //appBar: AppBar(
+       // title: const Appbar_eve15(),// AppbarMore 위젯을 AppBar의 title로 사용
+        //backgroundColor: Colors.white,
+      //),
+      //ListView.builder를 사용하여 이벤트 목록을 동적으로 생성
+      body: SafeArea(
+          child :  Column(
+            children: [
+
+              Appbar_eve15(),
+              Expanded(
+                child: ListView.builder(
+                        itemCount: events.length,
+                        itemBuilder: (context, index) {
+                final event = events[index];
+                return Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 8.0),
+                  child: Card( // 이벤트 카드를 Card 위젯으로 래핑
+                    color: Colors.transparent, // 카드의 배경을 투명으로 설정
+                    margin: EdgeInsets.zero,
+                    child: ClipRRect(
                       borderRadius: BorderRadius.circular(10.0),
-                    ),
-                    height: 110, // 원하는 높이로 설정
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        children: [
-                          event.imagePath.isNotEmpty
-                              ? Container(
-                            width: 79,
-                            height: 92, // 이미지 높이를 92로 설정
-                            child: Image.asset(event.imagePath, fit: BoxFit.cover),
-                          )
-                              : Container(
-                            width: 79,
-                            height: 92,
-                            color: Colors.grey,
-                          ), // 이미지가 없는 경우 대체
-                          SizedBox(width: 16), // 이미지와 텍스트 사이의 간격
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                      child: BackdropFilter(
+                        filter: ImageFilter.blur(sigmaX: 0, sigmaY: 5), // 블러 효과 적용
+                        child: Container( // 고정된 높이를 설정하기 위해 Container 사용
+                          decoration: BoxDecoration(
+                            color: Colors.white.withOpacity(1), // 카드의 배경을 흰색으로 설정
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          height: 110, // 원하는 높이로 설정
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(
                               children: [
-                                // 날짜가 제목 위에 오도록 변경
-                                Text(event.date, style: TextStyle(color: Color(0xFF5669FF), fontSize: 12)), // 날짜를 #5669FF로 설정
-                                SizedBox(height: 4), // 제목과 날짜 사이의 간격 추가
-                                Text(event.title, style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)), // 제목의 폰트 크기를 16으로 설정하고 굵은 글씨로 표시
-                                SizedBox(height: 8), // 제목과 위치 정보 사이의 간격 추가
-                                Row(
-                                  children: [
-                                    Icon(Icons.location_on, size: 18, color: Colors.grey), // 위치 아이콘
-                                    SizedBox(width: 4), // 아이콘과 텍스트 사이의 간격
-                                    Expanded(
-                                      child: Text(
-                                        event.location,
-                                        style: TextStyle(color: Colors.grey, fontSize: 12),
-                                        overflow: TextOverflow.ellipsis, // 텍스트가 길면 말줄임표(...)로 표시
+                                event.imagePath.isNotEmpty
+                                    ? Container(
+                                  width: 79,
+                                  height: 92, // 이미지 높이를 92로 설정
+                                  child: Image.asset(event.imagePath, fit: BoxFit.cover),
+                                )
+                                    : Container(
+                                  width: 79,
+                                  height: 92,
+                                  color: Colors.grey,
+                                ), // 이미지가 없는 경우 대체
+                                SizedBox(width: 16), // 이미지와 텍스트 사이의 간격
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      // 날짜가 제목 위에 오도록 변경
+                                      Text(event.date, style: TextStyle(color: Color(0xFF5669FF), fontSize: 12)), // 날짜를 #5669FF로 설정
+                                      SizedBox(height: 4), // 제목과 날짜 사이의 간격 추가
+                                      Text(event.title, style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)), // 제목의 폰트 크기를 16으로 설정하고 굵은 글씨로 표시
+                                      SizedBox(height: 8), // 제목과 위치 정보 사이의 간격 추가
+                                      Row(
+                                        children: [
+                                          Icon(Icons.location_on, size: 18, color: Colors.grey), // 위치 아이콘
+                                          SizedBox(width: 4), // 아이콘과 텍스트 사이의 간격
+                                          Expanded(
+                                            child: Text(
+                                              event.location,
+                                              style: TextStyle(color: Colors.grey, fontSize: 12),
+                                              overflow: TextOverflow.ellipsis, // 텍스트가 길면 말줄임표(...)로 표시
+                                            ),
+                                          ),
+                                        ],
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
                               ],
                             ),
                           ),
-                        ],
+                        ),
                       ),
                     ),
                   ),
-                ),
+                );
+                        },
+                      ),
               ),
-            ),
-          );
-        },
+            ],
+          ),
+
+
       ),
     );
   }
