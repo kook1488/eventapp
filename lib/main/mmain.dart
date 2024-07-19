@@ -5,7 +5,7 @@ import 'package:wordapp/sub/router.dart';
 void main() {
   runApp(MyApp());
 }
-
+//sdfsdfsdf
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
