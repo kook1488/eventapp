@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2024-07-19T09:22:48.424Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36 Edg/126.0.0.0" etag="EPKt6CX8ECsktt-Ze4my" version="24.7.1" type="github">
+<mxfile host="app.diagrams.net" modified="2024-07-19T09:27:46.656Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36 Edg/126.0.0.0" etag="SN8t0eCiSGrsra_-kUr9" version="24.7.1" type="github">
   <diagram name="Page-1" id="ad52d381-51e7-2e0d-a935-2d0ddd2fd229">
-    <mxGraphModel dx="1426" dy="1643" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="none" math="0" shadow="0">
+    <mxGraphModel dx="2194" dy="2070" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="none" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -455,12 +455,27 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="bBWAhA0NGzCzhR4YBMDQ-126" value="여러카드들..." style="whiteSpace=wrap;html=1;rounded=1;shadow=1;comic=0;labelBackgroundColor=none;strokeWidth=2;fontFamily=Verdana;fontSize=12;align=center;arcSize=50;" vertex="1" parent="1">
-          <mxGeometry x="1550" y="455" width="80" height="130" as="geometry" />
+          <mxGeometry x="1560" y="560" width="80" height="130" as="geometry" />
         </mxCell>
         <mxCell id="bBWAhA0NGzCzhR4YBMDQ-127" value="" style="edgeStyle=none;rounded=1;html=1;labelBackgroundColor=none;startArrow=none;startFill=0;startSize=5;endArrow=classicThin;endFill=1;endSize=5;jettySize=auto;orthogonalLoop=1;strokeColor=#B3B3B3;strokeWidth=1;fontFamily=Verdana;fontSize=12" edge="1" parent="1" source="bBWAhA0NGzCzhR4YBMDQ-124" target="bBWAhA0NGzCzhR4YBMDQ-126">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="1520" y="589.5" as="sourcePoint" />
             <mxPoint x="1710" y="590" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bBWAhA0NGzCzhR4YBMDQ-128" value="nearby you" style="whiteSpace=wrap;html=1;rounded=1;shadow=1;comic=0;labelBackgroundColor=none;strokeWidth=2;fontFamily=Verdana;fontSize=12;align=center;arcSize=50;" vertex="1" parent="1">
+          <mxGeometry x="1550" y="430" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bBWAhA0NGzCzhR4YBMDQ-129" value="nearby you" style="whiteSpace=wrap;html=1;rounded=1;shadow=1;comic=0;labelBackgroundColor=none;strokeWidth=2;fontFamily=Verdana;fontSize=12;align=center;arcSize=50;" vertex="1" parent="1">
+          <mxGeometry x="1730" y="440" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bBWAhA0NGzCzhR4YBMDQ-130" value="여러카드들..." style="whiteSpace=wrap;html=1;rounded=1;shadow=1;comic=0;labelBackgroundColor=none;strokeWidth=2;fontFamily=Verdana;fontSize=12;align=center;arcSize=50;" vertex="1" parent="1">
+          <mxGeometry x="1310" y="660" width="80" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="bBWAhA0NGzCzhR4YBMDQ-131" value="" style="edgeStyle=none;rounded=1;html=1;labelBackgroundColor=none;startArrow=none;startFill=0;startSize=5;endArrow=classicThin;endFill=1;endSize=5;jettySize=auto;orthogonalLoop=1;strokeColor=#B3B3B3;strokeWidth=1;fontFamily=Verdana;fontSize=12" edge="1" parent="1" source="bBWAhA0NGzCzhR4YBMDQ-122" target="bBWAhA0NGzCzhR4YBMDQ-130">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1250" y="715" as="sourcePoint" />
+            <mxPoint x="1302" y="757" as="targetPoint" />
           </mxGeometry>
         </mxCell>
       </root>
