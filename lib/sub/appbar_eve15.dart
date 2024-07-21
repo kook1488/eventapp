@@ -26,7 +26,6 @@ class Appbar_eve15 extends StatelessWidget {
             size: 26,
             ),
             ),
-
         ),
 
 

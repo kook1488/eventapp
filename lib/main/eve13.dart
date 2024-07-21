@@ -17,7 +17,9 @@ class MyApp extends StatelessWidget {
   }
 }
 
+
 // EventsListScreen 클래스는 이벤트 리스트를 보여주는 화면입니다.
+
 class Eve13 extends StatelessWidget {
   final List<Event> events = [
     Event(
