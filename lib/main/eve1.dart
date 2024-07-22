@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';//이거 스샷찍은거처럼 페이지 이동하기
+import 'package:go_router/go_router.dart'; //이거 스샷찍은거처럼 페이지 이동하기
+
 //이미지 크기 조정해서 구형해주기
 void main() {
   runApp(MyApp());
@@ -30,7 +31,6 @@ class Eve1 extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-
           Positioned(
             bottom: 580,
             right: 0,
@@ -41,7 +41,6 @@ class Eve1 extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-
           Positioned(
             bottom: 0,
             right: 200,
@@ -52,16 +51,13 @@ class Eve1 extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-
-
           Center(
             child: Image.asset(
               'assets/images/1eve_image.png',
               height: 220, // 이미지 높이
-              width: 240,  // 이미지 너비
+              width: 240, // 이미지 너비
             ),
           ),
-
         ],
       ),
     );

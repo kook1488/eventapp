@@ -24,7 +24,8 @@ class _TodoListScreenState extends State<TodoListScreen> {
 
   void _addItem() {
     // 여기에 setState를 사용하여 아이템을 추가하세요
-    setState(() { // setState를 사용하여 아이템을 추가
+    setState(() {
+      // setState를 사용하여 아이템을 추가
       if (_controller.text.isNotEmpty) {
         _items.add(_controller.text);
         _controller.clear();
@@ -34,7 +35,8 @@ class _TodoListScreenState extends State<TodoListScreen> {
 
   void _removeItem(int index) {
     // 여기에 setState를 사용하여 아이템을 제거하세요
-    setState(() { // setState를 사용하여 아이템을 제거
+    setState(() {
+      // setState를 사용하여 아이템을 제거
       _items.removeAt(index);
     });
   }

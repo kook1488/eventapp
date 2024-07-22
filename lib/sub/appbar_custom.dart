@@ -27,7 +27,7 @@ class Appbar_custom extends StatelessWidget {
             onTap: () {
               context.go("/eve14");
             },
-              child : Container(
+            child: Container(
               margin: EdgeInsets.only(left: 24, top: 3),
               child: Icon(
                 Icons.arrow_back,
@@ -35,7 +35,6 @@ class Appbar_custom extends StatelessWidget {
               ),
             ),
           ),
-
 
 
           SizedBox(width: 12),
@@ -53,9 +52,11 @@ class Appbar_custom extends StatelessWidget {
 
           Spacer(),
           GestureDetector(
-            onTap: () {context.go("/eve13");},
+            onTap: () {
+              context.go("/eve13");
+            },
 
-            child : Container(
+            child: Container(
               margin: EdgeInsets.only(right: 4),
               child: Image.asset(
                 'assets/icons/search.png', // 업로드한 search.png 이미지를 사용
@@ -63,7 +64,7 @@ class Appbar_custom extends StatelessWidget {
                 height: 23, // 이미지의 높이 설정
               ),
             ),
-          ):const SizedBox(),
+          ), const SizedBox(),
 
           SizedBox(width: 12),
           Container(

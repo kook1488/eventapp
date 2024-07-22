@@ -8,23 +8,23 @@ class TextStyles {
 
   //* 타이틀 텍스트 스타일
   static TextStyle get title1 => _font1.copyWith(
-    color: AppColors.blackColors[0],
-    fontSize: 24.sp,
-    fontWeight: FontWeight.bold,
-  );
+        color: AppColors.blackColors[0],
+        fontSize: 24.sp,
+        fontWeight: FontWeight.bold,
+      );
 
   //* 기본 텍스트 스타일
   static TextStyle get text1 => _font1.copyWith(
-    color: AppColors.blackColors[0],
-    fontSize: 15.sp,
-    height: (25 / 15).h,
-  );
+        color: AppColors.blackColors[0],
+        fontSize: 15.sp,
+        height: (25 / 15).h,
+      );
 
   static TextStyle get text2 => _font1.copyWith(
-    color: AppColors.greyColors[1],
-    fontSize: 16.sp,
-    height: (25 / 16).h,
-  );
+        color: AppColors.greyColors[1],
+        fontSize: 16.sp,
+        height: (25 / 16).h,
+      );
 }
 
 abstract class AppColors {

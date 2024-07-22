@@ -11,23 +11,20 @@ class Appbar_eve15 extends StatelessWidget {
       height: 50,
       child: Row(
         children: [
-
           //14페이지 긁어와도 축소되어 보이는건 똑같음
 
-        GestureDetector(
-          onTap: () {
-               context.go("/eve14");
-               },
-
-            child : Container(
-            margin: EdgeInsets.only(left: 24, top: 3),
-            child: Icon(
-            Icons.arrow_back,
-            size: 26,
+          GestureDetector(
+            onTap: () {
+              context.go("/eve14");
+            },
+            child: Container(
+              margin: EdgeInsets.only(left: 24, top: 3),
+              child: Icon(
+                Icons.arrow_back,
+                size: 26,
+              ),
             ),
-            ),
-        ),
-
+          ),
 
           SizedBox(width: 12),
           Container(
@@ -44,20 +41,20 @@ class Appbar_eve15 extends StatelessWidget {
 
           Spacer(),
 
-    GestureDetector(
-         onTap: () {context.go("/eve13");},
-
-      child : Container(
-            margin: EdgeInsets.only(right: 4),
-            child: Image.asset(
-              'assets/icons/search.png', // 업로드한 search.png 이미지를 사용
-              width: 23, // 이미지의 너비 설정
-              height: 23, // 이미지의 높이 설정
+          GestureDetector(
+            onTap: () {
+              context.go("/eve13");
+            },
+            child: Container(
+              margin: EdgeInsets.only(right: 4),
+              child: Image.asset(
+                'assets/icons/search.png', // 업로드한 search.png 이미지를 사용
+                width: 23, // 이미지의 너비 설정
+                height: 23, // 이미지의 높이 설정
+              ),
             ),
           ),
-    ),
           SizedBox(width: 12),
-
 
           Container(
             margin: EdgeInsets.only(right: 24),
@@ -67,7 +64,6 @@ class Appbar_eve15 extends StatelessWidget {
               height: 24, // 이미지의 높이 설정
             ),
           ),
-
         ],
       ),
     );

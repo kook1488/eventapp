@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:wordapp/sub/appbar_eve13.dart';
 import 'dart:ui'; // 블러 효과를 추가하기 위해 필요
 
-
 void main() {
   runApp(MyApp());
 }
@@ -16,7 +15,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
 
 // EventsListScreen 클래스는 이벤트 리스트를 보여주는 화면입니다.
 
@@ -76,7 +74,8 @@ class Eve13 extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               SizedBox(width: 24),
-              Image.asset('assets/icons/search_blue.png', width: 30, height: 30),
+              Image.asset('assets/icons/search_blue.png',
+                  width: 30, height: 30),
               SizedBox(width: 10),
               // TextField 추가
               Container(
@@ -107,11 +106,12 @@ class Eve13 extends StatelessWidget {
 
                     child: Padding(
                       padding: EdgeInsets.only(right: 5),
-
-                      child: Row( // Container 안에 Row 추가
+                      child: Row(
+                        // Container 안에 Row 추가
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Image.asset('assets/icons/filter.png', width: 27, height: 27),
+                          Image.asset('assets/icons/filter.png',
+                              width: 27, height: 27),
                           // 추가할 이미지
                           SizedBox(width: 5), // 이미지와 텍스트 사이의 간격
                           Text(
@@ -138,17 +138,22 @@ class Eve13 extends StatelessWidget {
               itemBuilder: (context, index) {
                 final event = events[index];
                 return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 8.0),
-                  child: Card( // 이벤트 카드를 Card 위젯으로 래핑
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 30.0, vertical: 8.0),
+                  child: Card(
+                    // 이벤트 카드를 Card 위젯으로 래핑
                     color: Colors.transparent, // 카드의 배경을 투명으로 설정
                     margin: EdgeInsets.zero,
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(10.0),
                       child: BackdropFilter(
-                        filter: ImageFilter.blur(sigmaX: 0, sigmaY: 5), // 블러 효과 적용
-                        child: Container( // 고정된 높이를 설정하기 위해 Container 사용
+                        filter: ImageFilter.blur(sigmaX: 0, sigmaY: 5),
+                        // 블러 효과 적용
+                        child: Container(
+                          // 고정된 높이를 설정하기 위해 Container 사용
                           decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(1), // 카드의 배경을 흰색으로 설정
+                            color: Colors.white.withOpacity(1),
+                            // 카드의 배경을 흰색으로 설정
                             borderRadius: BorderRadius.circular(10.0),
                           ),
                           height: 110, // 원하는 높이로 설정
@@ -158,34 +163,51 @@ class Eve13 extends StatelessWidget {
                               children: [
                                 event.imagePath.isNotEmpty
                                     ? Container(
-                                  width: 79,
-                                  height: 92, // 이미지 높이를 92로 설정
-                                  child: Image.asset(event.imagePath, fit: BoxFit.cover),
-                                )
+                                        width: 79,
+                                        height: 92, // 이미지 높이를 92로 설정
+                                        child: Image.asset(event.imagePath,
+                                            fit: BoxFit.cover),
+                                      )
                                     : Container(
-                                  width: 79,
-                                  height: 92,
-                                  color: Colors.grey,
-                                ), // 이미지가 없는 경우 대체
+                                        width: 79,
+                                        height: 92,
+                                        color: Colors.grey,
+                                      ), // 이미지가 없는 경우 대체
                                 SizedBox(width: 16), // 이미지와 텍스트 사이의 간격
                                 Expanded(
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       // 날짜가 제목 위에 오도록 변경
-                                      Text(event.date, style: TextStyle(color: Color(0xFF5669FF), fontSize: 12)), // 날짜를 #5669FF로 설정
-                                      SizedBox(height: 4), // 제목과 날짜 사이의 간격 추가
-                                      Text(event.title, style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)), // 제목의 폰트 크기를 16으로 설정하고 굵은 글씨로 표시
-                                      SizedBox(height: 8), // 제목과 위치 정보 사이의 간격 추가
+                                      Text(event.date,
+                                          style: TextStyle(
+                                              color: Color(0xFF5669FF),
+                                              fontSize: 12)),
+                                      // 날짜를 #5669FF로 설정
+                                      SizedBox(height: 4),
+                                      // 제목과 날짜 사이의 간격 추가
+                                      Text(event.title,
+                                          style: TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.bold)),
+                                      // 제목의 폰트 크기를 16으로 설정하고 굵은 글씨로 표시
+                                      SizedBox(height: 8),
+                                      // 제목과 위치 정보 사이의 간격 추가
                                       Row(
                                         children: [
-                                          Icon(Icons.location_on, size: 18, color: Colors.grey), // 위치 아이콘
+                                          Icon(Icons.location_on,
+                                              size: 18,
+                                              color: Colors.grey), // 위치 아이콘
                                           SizedBox(width: 4), // 아이콘과 텍스트 사이의 간격
                                           Expanded(
                                             child: Text(
                                               event.location,
-                                              style: TextStyle(color: Colors.grey, fontSize: 12),
-                                              overflow: TextOverflow.ellipsis, // 텍스트가 길면 말줄임표(...)로 표시
+                                              style: TextStyle(
+                                                  color: Colors.grey,
+                                                  fontSize: 12),
+                                              overflow: TextOverflow
+                                                  .ellipsis, // 텍스트가 길면 말줄임표(...)로 표시
                                             ),
                                           ),
                                         ],

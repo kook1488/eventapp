@@ -26,7 +26,7 @@ class ImageStackPage extends StatelessWidget {
             left: 0,
             right: 0,
             child: Image.asset(
-              'assets/images/2eve_image1.png', // 배경 이미지 경로
+              'assets/images/4eve_image1.png', // 배경 이미지 경로
               fit: BoxFit.contain,
               width: 700,
               height: 750,
@@ -44,11 +44,11 @@ class ImageStackPage extends StatelessWidget {
           ),
           // 3. 상단 이미지
           Positioned(
-            top: 620,
+            top: 630,
             left: 0,
             right: 0,
             child: Image.asset(
-              'assets/images/2eve_image3.png', // 상단 이미지 경로
+              'assets/images/4eve_image2.png', // 상단 이미지 경로
               fit: BoxFit.contain,
               width: 145,
               height: 145, // 크기 감소
