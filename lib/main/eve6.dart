@@ -12,7 +12,8 @@ class EventHubApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: SignUpScreen(), // SignInScreen에서 SignUpScreen으로 변경
+      home: SignUpScreen(),
+      debugShowCheckedModeBanner: false,// SignInScreen에서 SignUpScreen으로 변경
     );
   }
 }

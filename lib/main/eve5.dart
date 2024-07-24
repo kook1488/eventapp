@@ -10,8 +10,10 @@ class EventHubApp extends StatelessWidget {
     return MaterialApp(
       title: 'EventHub',
       theme: ThemeData(
+
         primarySwatch: Colors.blue,
       ),
+
       home: SignInScreen(),
     );
   }
