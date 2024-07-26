@@ -1,110 +1,87 @@
-//샌드 옆에 아이콘 위쪽 안보이는거 수정하기
-
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
-  runApp(MaterialApp(
-    home: PasswordResetScreen(),
-    debugShowCheckedModeBanner: false,
-  ));
+  runApp(MyApp());
 }
 
-class PasswordResetScreen extends StatelessWidget {
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Nickname App',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: NicknamePage(),
+    );
+  }
+}
+
+class NicknamePage extends StatefulWidget {
+  @override
+  _NicknamePageState createState() => _NicknamePageState();
+}
+
+class _NicknamePageState extends State<NicknamePage> {
+  TextEditingController _controller = TextEditingController();
+  String _nickname = 'No nickname saved';
+
+  @override
+  void initState() {
+    super.initState();
+    _loadNickname();
+  }
+
+  Future<void> _loadNickname() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _nickname = prefs.getString('nickname') ?? 'No nickname saved';
+    });
+  }
+
+  Future<void> _saveNickname() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('nickname', _controller.text);
+    _loadNickname();
+  }
+
+  Future<void> _deleteNickname() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove('nickname');
+    _loadNickname();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        iconTheme: IconThemeData(color: Colors.black),
+        title: Text('Nickname App'),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(height: 25),
-
-            Text(
-              'Reset Password', // "Resset Password" -> "Reset Password"
-              style: TextStyle(
-                fontSize: 28,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-
-            Text.rich(
-              TextSpan(
-                text: 'please enter your email address to\n', // 첫 번째 줄 텍스트
-                style: TextStyle(fontSize: 16, color: Colors.black),
-                children: <TextSpan>[
-                  TextSpan(
-                    text: 'request a password reset', // 두 번째 줄 텍스트
-                    style: TextStyle(fontSize: 16, color: Colors.black),
-                  ),
-                ],
-              ),
-            ),
-
-            SizedBox(height: 30),
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
             TextField(
-              decoration: InputDecoration(
-                prefixIcon: Icon(Icons.email_outlined),
-                hintText: 'abc@email.com',
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12.0),
-                ),
-              ),
+              controller: _controller,
+              decoration: InputDecoration(labelText: 'Enter your nickname'),
             ),
-
-            SizedBox(height: 40.0),
-
-            Center( // Center 위젯으로 감싸서 가로축 가운데 정렬
-              child: SizedBox(
-                width: 285.0,
-                height: 60,
-                child: ElevatedButton(
-                  onPressed: () {
-                    // Add sign-in logic here
-                  },
-                  style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.symmetric(vertical: 20.0),
-                    backgroundColor: Color.fromRGBO(86, 105, 255, 1),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                  ),
-                  child: Stack(
-                    children: [
-                      Align(
-                        alignment: Alignment.center,
-                        child: Text(
-                          'SEND',
-                          style: TextStyle(
-                            fontSize: 18.0,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        right: 9.0, // 아이콘을 오른쪽에 배치
-                        top: -15,
-                        child: Image.asset(
-                          'assets/images/5eve_image1.png', // 커스텀 아이콘 추가
-                          height: 42.0,
-                          width: 45.0,
-                        ),
-                      ),
-                    ],
-                  ),
+            SizedBox(height: 20),
+            Text('Saved Nickname: $_nickname'),
+            SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                ElevatedButton(
+                  onPressed: _saveNickname,
+                  child: Text('Save'),
                 ),
-              ),
+                ElevatedButton(
+                  onPressed: _deleteNickname,
+                  child: Text('Delete'),
+                ),
+              ],
             ),
           ],
         ),
