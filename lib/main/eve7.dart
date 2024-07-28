@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,18 +14,18 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: VerificationScreen(),
-      debugShowCheckedModeBanner: false,
+      home: Eve7(),
+
     );
   }
 }
 
-class VerificationScreen extends StatefulWidget {
+class Eve7 extends StatefulWidget {
   @override
   _VerificationScreenState createState() => _VerificationScreenState();
 }
 
-class _VerificationScreenState extends State<VerificationScreen> {
+class _VerificationScreenState extends State<Eve7> {
   final _focusNodes = List<FocusNode>.generate(4, (index) => FocusNode());
   final _controllers = List<TextEditingController>.generate(
       4, (index) => TextEditingController());
@@ -76,7 +77,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
           icon: Icon(Icons.arrow_back),
           onPressed: () {
             // 뒤로가기 버튼 눌렀을 때 동작
-            Navigator.pop(context);
+            context.go("/eve8");
           },
         ),
         elevation: 0, // AppBar의 그림자 제거

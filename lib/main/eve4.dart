@@ -9,13 +9,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: ImageStackPage(),
+
+      home: Eve4(),
     );
   }
 }
 
-class ImageStackPage extends StatelessWidget {
+class Eve4 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,21 +65,39 @@ class ImageStackPage extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+
+                  GestureDetector(
+                    onTap: () {
+                      context.go("/eve5");
+                    },
+
+                    child: Image.asset(
+                      'assets/images/2eve_image41.png', // 첫 번째 이미지 경로
+                      width: 50,
+                      height: 50,
+                    ),
+                  ),
+
+
                   Image.asset(
-                    'assets/images/2eve_image41.png', // 첫 번째 이미지 경로
+                    'assets/images/4eve_image42.png', // 두 번째 이미지 경로
                     width: 50,
                     height: 50,
                   ),
-                  Image.asset(
-                    'assets/images/2eve_image42.png', // 두 번째 이미지 경로
-                    width: 50,
-                    height: 50,
-                  ),
-                  Image.asset(
-                    'assets/images/2eve_image43.png', // 세 번째 이미지 경로
-                    width: 50,
-                    height: 50,
-                  ),
+
+                  GestureDetector(
+                    onTap: () {
+                      context.go("/eve5");
+                    },
+
+                    child: Image.asset(
+                      'assets/images/2eve_image43.png', // 세 번째 이미지 경로
+                      width: 50,
+                      height: 50,
+                    ),
+                  )
+
+
                 ],
               ),
             ),

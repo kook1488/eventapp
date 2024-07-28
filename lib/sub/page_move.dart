@@ -38,12 +38,14 @@ class MainPage extends StatelessWidget {
                 const SizedBox(
                   height: 31,
                 ),
+
                 ElevatedButton(
                   onPressed: () {
                     context.pushNamed("animatedOpacity");
                   },
                   child: const Text("animatedOpacity"),
                 ),
+
                 const SizedBox(
                   height: 31,
                 ),
@@ -127,7 +129,7 @@ class _AnimatedOpacityPageState extends State<AnimatedOpacityPage> {
         centerTitle: true,
       ),
       body: Stack(
-        children: [
+        children: [//여기가 애니메이션 효과
           Padding(
             padding: const EdgeInsets.only(top: 200),
             child: Align(
@@ -215,7 +217,7 @@ final routers = GoRouter(
       ),
     ),
 
-    GoRoute(
+    GoRoute(//!주력으로 할거
       path: "/animatedOpacity",
       name: "animatedOpacity",
       //! 페이지가 왼쪽에서 오른쪽으로 이동되면서 전환 (전환 방향 및 속도 조절가능)

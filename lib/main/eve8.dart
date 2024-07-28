@@ -1,15 +1,15 @@
 //샌드 옆에 아이콘 위쪽 안보이는거 수정하기
-
+import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(MaterialApp(
-    home: PasswordResetScreen(),
-    debugShowCheckedModeBanner: false,
+    home: Eve8(),
+
   ));
 }
 
-class PasswordResetScreen extends StatelessWidget {
+class Eve8 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,7 +17,7 @@ class PasswordResetScreen extends StatelessWidget {
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.of(context).pop();
+            context.go("/eve5");
           },
         ),
         elevation: 0,
@@ -30,7 +30,6 @@ class PasswordResetScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(height: 25),
-
             Text(
               'Reset Password', // "Resset Password" -> "Reset Password"
               style: TextStyle(
@@ -38,7 +37,6 @@ class PasswordResetScreen extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-
             Text.rich(
               TextSpan(
                 text: 'please enter your email address to\n', // 첫 번째 줄 텍스트
@@ -51,7 +49,6 @@ class PasswordResetScreen extends StatelessWidget {
                 ],
               ),
             ),
-
             SizedBox(height: 30),
             TextField(
               decoration: InputDecoration(
@@ -62,15 +59,15 @@ class PasswordResetScreen extends StatelessWidget {
                 ),
               ),
             ),
-
             SizedBox(height: 40.0),
-
-            Center( // Center 위젯으로 감싸서 가로축 가운데 정렬
+            Center(
+              // Center 위젯으로 감싸서 가로축 가운데 정렬
               child: SizedBox(
                 width: 285.0,
                 height: 60,
                 child: ElevatedButton(
                   onPressed: () {
+                    context.go("/eve7");
                     // Add sign-in logic here
                   },
                   style: ElevatedButton.styleFrom(

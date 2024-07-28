@@ -1,30 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
-void main() {
-  runApp(EventHubApp());
-}
+
 
 class EventHubApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'EventHub',
-      theme: ThemeData(
 
-        primarySwatch: Colors.blue,
-      ),
-
-      home: SignInScreen(),
+      home: Eve5(),
     );
   }
 }
 
-class SignInScreen extends StatefulWidget {
+class Eve5 extends StatefulWidget {
   @override
   _SignInScreenState createState() => _SignInScreenState();
 }
 
-class _SignInScreenState extends State<SignInScreen> {
+class _SignInScreenState extends State<Eve5> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   bool _rememberMe = false;
@@ -51,6 +45,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
+
               SizedBox(height: 35.0),
               Padding(
                 padding: const EdgeInsets.only(right: 280.0), // 왼쪽 여백 추가
@@ -62,6 +57,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   ),
                 ),
               ),
+
               SizedBox(height: 16.0),
               TextField(
                 controller: _emailController,
@@ -71,8 +67,13 @@ class _SignInScreenState extends State<SignInScreen> {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(9.0),
                   ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(9.0),
+                    borderSide: BorderSide(color: Colors.grey.shade400), // 비활성화 상태의 테두리 색상
+                  ),
                 ),
               ),
+
               SizedBox(height: 16.0),
               TextField(
                 controller: _passwordController,
@@ -84,6 +85,11 @@ class _SignInScreenState extends State<SignInScreen> {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(9.0),
                   ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(9.0),
+                    borderSide: BorderSide(color: Colors.grey.shade400), // 비활성화 상태의 테두리 색상
+                  ),
+
                 ),
               ),
               SizedBox(height: 16.0),
@@ -115,10 +121,14 @@ class _SignInScreenState extends State<SignInScreen> {
                       ),
                     ],
                   ),
+
+
+
                   TextButton(
                     onPressed: () {
+                      context.go("/eve8");
                       // Add forgot password logic here
-                    },
+                      },
                     child: Text('Forgot Password?',
                       style: TextStyle(
                         fontSize: 16.0,
@@ -176,8 +186,16 @@ class _SignInScreenState extends State<SignInScreen> {
 
 
               SizedBox(height: 25.0),
-              Text('OR'),
+
+              Text(
+                'OR',
+                style: TextStyle(
+                  fontSize: 18.0, // 텍스트 크기 조정
+                  color: Colors.grey.shade600, // 옅은 회색으로 변경
+                ),
+              ),
               SizedBox(height: 15.0),
+
               // Google 로그인 버튼 추가
               ElevatedButton(
                 onPressed: () {
@@ -187,7 +205,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   padding: EdgeInsets.zero, // 내부 패딩을 제거합니다
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8.0),
-                    side: BorderSide(color: Colors.grey),
+                    side: BorderSide(color: Colors.grey.shade300),
                   ),
                   backgroundColor: Colors.white, // 배경색을 흰색으로 설정합니다
                 ),
@@ -223,7 +241,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   padding: EdgeInsets.symmetric(vertical: 1.0, horizontal: 2.0),// 내부 패딩을 제거합니다
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8.0),
-                    side: BorderSide(color: Colors.grey),
+                    side: BorderSide(color: Colors.grey.shade300),
                   ),
                   backgroundColor: Colors.white, // 배경색을 흰색으로 설정합니다
                 ),
@@ -253,15 +271,23 @@ class _SignInScreenState extends State<SignInScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Don’t have an account?"),
-                  TextButton(
-                    onPressed: () {
-                      // Add sign-up navigation logic here
-                    },
-                    child: Text(
-                      'Sign up',
-                      style: TextStyle(color: Color.fromRGBO(86, 105, 255, 1)),
-                    ),
+                  Text("Don’t have an account?  "),
+
+
+                    GestureDetector(
+                      onTap: () {
+                        context.go("/eve6");
+                      },
+
+                      child: Text(
+                        'Sign up',
+                        style: TextStyle(color: Color.fromRGBO(86, 105, 255, 1)),
+                      ),
+
+
+
+
+
                   ),
                 ],
               ),

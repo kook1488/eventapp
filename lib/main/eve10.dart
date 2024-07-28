@@ -8,12 +8,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: HomePage(),
+      home: Eve10(),
     );
   }
 }
 
-class HomePage extends StatelessWidget {
+class Eve10 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

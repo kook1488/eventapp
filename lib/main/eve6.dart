@@ -1,29 +1,23 @@
 import 'package:flutter/material.dart';
-
-void main() {
-  runApp(EventHubApp());
-}
+import 'package:go_router/go_router.dart';
 
 class EventHubApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'EventHub',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: SignUpScreen(),
-      debugShowCheckedModeBanner: false,// SignInScreen에서 SignUpScreen으로 변경
+      home: Eve6(),
+
     );
   }
 }
 
-class SignUpScreen extends StatefulWidget {
+class Eve6 extends StatefulWidget {
   @override
   _SignUpScreenState createState() => _SignUpScreenState();
 }
 
-class _SignUpScreenState extends State<SignUpScreen> {
+class _SignUpScreenState extends State<Eve6> {
   final TextEditingController _fullNameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -32,15 +26,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      extendBodyBehindAppBar: true,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(30.0),
+      child : AppBar(
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
+            context.go("/eve5");
             // Add navigation logic here
           },
         ),
         elevation: 0,
         backgroundColor: Colors.transparent,
+      ),
       ),
       body: Center(
         child: SingleChildScrollView(
@@ -49,11 +48,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
             crossAxisAlignment: CrossAxisAlignment.start, // 왼쪽 정렬
             children: [
               Container(
-                padding: const EdgeInsets.only(bottom: 20.0), // 텍스트와 다른 위젯 사이에 여백 줄임
+                margin: const EdgeInsets.only(top: 0.0, bottom: 25.0), // 위쪽 여백을 조정하여 'Sign up' 텍스트를 위로 올림
                 child: Text(
                   'Sign up',
                   style: TextStyle(
-                    fontSize: 30.0, // 크기 수정 (디자인에 맞춤)
+                    fontSize: 28.0, // 크기 수정 (디자인에 맞춤)
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -62,58 +61,89 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    TextField(
-                      controller: _fullNameController,
-                      decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.person_outline),
-                        labelText: 'Full name',
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(9.0),
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 16.0),
-                    TextField(
-                      controller: _emailController,
-                      decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.email_outlined),
-                        labelText: 'abc@email.com',
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(9.0),
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 16.0),
-                    TextField(
-                      controller: _passwordController,
-                      obscureText: true,
-                      decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.lock_outline),
-                        suffixIcon: Icon(Icons.visibility_off_outlined),
-                        labelText: 'Your password',
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(9.0),
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 16.0),
-                    TextField(
-                      controller: _confirmPasswordController,
-                      obscureText: true,
-                      decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.lock_outline),
-                        suffixIcon: Icon(Icons.visibility_off_outlined),
-                        labelText: 'Confirm password',
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(9.0),
-                        ),
-                      ),
-                    ),
+                    Container(
+                      height: 60.0, // TextField 높이 조정
+                      child: TextField(
+                        controller: _fullNameController,
+                        decoration: InputDecoration(
+                          prefixIcon: Icon(Icons.person_outline),
+                          labelText: 'Full name',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(9.0),
 
 
-                    //샘플 버튼
-                    SizedBox
-                      (height: 16.0),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(9.0),
+                            borderSide: BorderSide(color: Colors.grey.shade300), // 비활성화 상태의 테두리 색상
+                          ),
+                          contentPadding: EdgeInsets.symmetric(vertical: 35.0), // 텍스트 필드 내부 패딩 조정
+                        ),
+
+                      ),
+                    ),
+                    SizedBox(height: 20.0),
+                    Container(
+                      height: 60.0, // TextField 높이 조정
+                      child: TextField(
+                        controller: _emailController,
+                        decoration: InputDecoration(
+                          prefixIcon: Icon(Icons.email_outlined),
+                          labelText: 'abc@email.com',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(9.0),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(9.0),
+                            borderSide: BorderSide(color: Colors.grey.shade300), // 비활성화 상태의 테두리 색상
+                          ),
+                          contentPadding: EdgeInsets.symmetric(vertical: 35.0), // 텍스트 필드 내부 패딩 조정
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 20.0),
+                    Container(
+                      height: 60.0, // TextField 높이 조정
+                      child: TextField(
+                        controller: _passwordController,
+                        obscureText: true,
+                        decoration: InputDecoration(
+                          prefixIcon: Icon(Icons.lock_outline),
+                          suffixIcon: Icon(Icons.visibility_off_outlined),
+                          labelText: 'Your password',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(9.0),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(9.0),
+                            borderSide: BorderSide(color: Colors.grey.shade300), // 비활성화 상태의 테두리 색상
+                          ),
+                          contentPadding: EdgeInsets.symmetric(vertical:35.0), // 텍스트 필드 내부 패딩 조정
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 20.0),
+                    Container(
+                      height: 60.0, // TextField 높이 조정
+                      child: TextField(
+                        controller: _confirmPasswordController,
+                        obscureText: true,
+                        decoration: InputDecoration(
+                          prefixIcon: Icon(Icons.lock_outline),
+                          suffixIcon: Icon(Icons.visibility_off_outlined),
+                          labelText: 'Confirm password',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(9.0),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(9.0),
+                            borderSide: BorderSide(color: Colors.grey.shade300), // 비활성화 상태의 테두리 색상
+                          ),
+                          contentPadding: EdgeInsets.symmetric(vertical: 35.0), // 텍스트 필드 내부 패딩 조정
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 50.0),
                     SizedBox(
                       width: 285.0,
                       height: 60,
@@ -121,7 +151,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         children: [
                           ElevatedButton(
                             onPressed: () {
-                              // Add sign-in logic here
+                              // Add sign-up logic here
                             },
                             style: ElevatedButton.styleFrom(
                               padding: EdgeInsets.symmetric(vertical: 20.0),
@@ -149,20 +179,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               height: 45.0,
                               width: 45.0,
                             ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 30.0),
 
-                          )
-                          ,
-                        ]
-                        ,
-                      )
-                      ,
-                    )
-                    ,
-
-
-                    SizedBox(height: 33.0),
-                    Text('OR'),
-                    SizedBox(height: 16.0),
+                    Text(
+                      'OR',
+                      style: TextStyle(
+                        fontSize: 18.0, // 텍스트 크기 조정
+                        color: Colors.grey.shade600, // 옅은 회색으로 변경
+                      ),
+                    ),
+                    SizedBox(height: 20.0),
                     ElevatedButton(
                       onPressed: () {
                         // Add Google sign-in logic here
@@ -171,7 +201,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         padding: EdgeInsets.zero,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8.0),
-                          side: BorderSide(color: Colors.grey),
+                          side: BorderSide(color: Colors.grey.shade300),
                         ),
                         backgroundColor: Colors.white,
                       ),
@@ -206,7 +236,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         padding: EdgeInsets.symmetric(vertical: 1.0, horizontal: 2.0),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8.0),
-                          side: BorderSide(color: Colors.grey),
+                          side: BorderSide(color: Colors.grey.shade300),
+
                         ),
                         backgroundColor: Colors.white,
                       ),
@@ -232,14 +263,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 16.0),
+                    SizedBox(height: 30.0),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("Already have an account?"),
-                        TextButton(
-                          onPressed: () {
-                            // Add sign-in navigation logic here
+                        Text("Already have an account?  "),
+                        GestureDetector(
+                          onTap: () {
+                            context.go("/eve5");
                           },
                           child: Text(
                             'Signin',
@@ -255,6 +286,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           ),
         ),
       ),
+
     );
   }
 }

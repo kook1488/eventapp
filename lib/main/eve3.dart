@@ -2,21 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'dart:ui'; // ImageFilter를 사용하기 위해 추가
 
-void main() {
-  runApp(MyApp());
-}
+//initial
 
-class MyApp extends StatelessWidget {
+
+
+class  MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: ImageStackPage(),
+
+      home: Eve3(),
     );
   }
 }
 
-class ImageStackPage extends StatelessWidget {
+class Eve3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -82,21 +82,39 @@ class ImageStackPage extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+
+                  GestureDetector(
+                    onTap: () {
+                      context.go("/eve5");
+                    },
+
+                    child: Image.asset(
+                      'assets/images/2eve_image41.png', // 첫 번째 이미지 경로
+                      width: 50,
+                      height: 50,
+                    ),
+                  ),
+
                   Image.asset(
-                    'assets/images/2eve_image41.png', // 첫 번째 이미지 경로
+                    'assets/images/3eve_image42.png', // 두 번째 이미지 경로
                     width: 50,
                     height: 50,
                   ),
-                  Image.asset(
-                    'assets/images/2eve_image42.png', // 두 번째 이미지 경로
-                    width: 50,
-                    height: 50,
-                  ),
-                  Image.asset(
-                    'assets/images/2eve_image43.png', // 세 번째 이미지 경로
-                    width: 50,
-                    height: 50,
-                  ),
+
+
+                  GestureDetector(
+                    onTap: () {
+                      context.go("/eve4");
+                    },
+
+                    child: Image.asset(
+                      'assets/images/2eve_image43.png', // 세 번째 이미지 경로
+                      width: 50,
+                      height: 50,
+                    ),
+                  )
+
+
                 ],
               ),
             ),
