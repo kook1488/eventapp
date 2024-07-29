@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false, // 디버그 표시 없애기
       routerConfig: routers,
+
     );
   }
 }

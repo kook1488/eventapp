@@ -14,7 +14,7 @@ import 'package:wordapp/main/eve14.dart';
 import 'package:wordapp/main/eve15.dart';
 
 final routers = GoRouter(
-  initialLocation: "/eve1",
+  initialLocation: "/eve13",
   routes: [
     GoRoute(
       path: "/eve1",
@@ -99,3 +99,4 @@ CustomTransitionPage<void> _buildPageWithTransition(GoRouterState state, Widget 
     transitionDuration: const Duration(milliseconds: 300),
   );
 }
+//dfs

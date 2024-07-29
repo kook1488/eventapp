@@ -31,6 +31,31 @@ class Eve1 extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
+
+            Positioned(
+              bottom: 670,
+              right: 220,
+              child: Image.asset(
+                'assets/images/5eve_image3.png',
+                width: 200,
+                height: 200,
+                fit: BoxFit.cover,
+              ),
+            ),
+
+
+
+            Positioned(
+              bottom: 340,
+              right: 0,
+              child: Image.asset(
+                'assets/images/5eve_image2.png',
+                width: 250,
+                height: 250,
+                fit: BoxFit.cover,
+              ),
+            ),
+
             Positioned(
               bottom: 0,
               right: 211,

@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-void main() {
-  runApp(MyApp());
-}
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-
       home: Eve4(),
     );
   }
 }
+
+
 
 class Eve4 extends StatelessWidget {
   @override
@@ -90,7 +88,7 @@ class Eve4 extends StatelessWidget {
                       context.go("/eve5");
                     },
 
-                    child: Image.asset(
+                    child: Image.asset( // ! 왜 페이지 전환 효과 안먹히지?
                       'assets/images/2eve_image43.png', // 세 번째 이미지 경로
                       width: 50,
                       height: 50,
