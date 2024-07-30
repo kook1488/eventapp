@@ -14,7 +14,7 @@ import 'package:wordapp/main/eve14.dart';
 import 'package:wordapp/main/eve15.dart';
 
 final routers = GoRouter(
-  initialLocation: "/eve13",
+  initialLocation: "/eve10",
   routes: [
     GoRoute(
       path: "/eve1",

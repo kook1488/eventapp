@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -91,47 +92,76 @@ class Eve10 extends StatelessWidget {
             // 카테고리 버튼
             Positioned(
               top: 180, // 적절한 위치로 조정
-              left: 20,
-              right: 20,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Color.fromRGBO(240, 99, 90, 1),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
+              left: 0,
+              right: 0,
+              child: SingleChildScrollView( // SingleChildScrollView로 감싸기
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+
+                    SizedBox(width: 28),
+                    ElevatedButton.icon( // 아이콘이 추가된 ElevatedButton
+                      icon: Icon(Icons.sports_basketball_sharp, color: Colors.white),
+                      label: Text('Sports', style: TextStyle(color: Colors.white)),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.deepOrangeAccent,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(25),
+                        ),
+                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                       ),
-                      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                      onPressed: () {},
                     ),
-                    onPressed: () {},
-                    child: Text('Sports', style: TextStyle(color: Colors.white)),
-                  ),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.orangeAccent,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
+
+                    SizedBox(width: 13), // 버튼 간격 추가
+                    ElevatedButton.icon( // 아이콘이 추가된 ElevatedButton
+                      icon: Icon(CupertinoIcons.music_note_2, color: Colors.white),
+                      label: Text('Music', style: TextStyle(color: Colors.white)),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.orangeAccent,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(25),
+                        ),
+                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                       ),
-                      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                      onPressed: () {},
+
                     ),
-                    onPressed: () {},
-                    child: Text('Music', style: TextStyle(color: Colors.white)),
-                  ),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.green,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
+
+                    SizedBox(width: 13), // 버튼 간격 추가
+                    ElevatedButton.icon( // 아이콘이 추가된 ElevatedButton
+                      icon: Icon(Icons.construction_outlined, color: Colors.white),
+                      label: Text('Food', style: TextStyle(color: Colors.white)),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Color(0xFF29D697),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(25),
+                        ),
+                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 22),
                       ),
-                      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                      onPressed: () {},
+
                     ),
-                    onPressed: () {},
-                    child: Text('Food', style: TextStyle(color: Colors.white)),
-                  ),
-                ],
+                    SizedBox(width: 13), // 버튼 간격 추가
+                    ElevatedButton.icon( // 아이콘이 추가된 ElevatedButton
+                      icon: Icon(Icons.local_movies_rounded, color: Colors.white),
+                      label: Text('Movie', style: TextStyle(color: Colors.white)),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.cyan,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(25),
+                        ),
+                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+                      ),
+                      onPressed: () {},
+
+                    ),
+                  ],
+                ),
               ),
             ),
+
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -146,7 +176,12 @@ class Eve10 extends StatelessWidget {
                         'Upcoming Events',
                         style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
                       ),
-                      Text('See All', style: TextStyle(color: Colors.grey)),
+                      Row(
+                        children: [
+                          Text('See All', style: TextStyle(color: Colors.grey)),
+                          Icon(Icons.arrow_right, color: Colors.grey), // 아이콘 추가
+                        ],
+                      ),
                     ],
                   ),
                 ),
@@ -157,6 +192,7 @@ class Eve10 extends StatelessWidget {
                   padding: EdgeInsets.symmetric(horizontal: 20),
                   child: Row(
                     children: [
+
                       EventCard(),
                       SizedBox(width: 16),
                       EventCard(),
@@ -175,6 +211,7 @@ class Eve10 extends StatelessWidget {
                     ),
                     child: Row(
                       children: [
+
                         Icon(Icons.card_giftcard, color: Colors.white, size: 40),
                         SizedBox(width: 10),
                         Expanded(
@@ -192,6 +229,7 @@ class Eve10 extends StatelessWidget {
                             ],
                           ),
                         ),
+
                         Padding(
                           padding: EdgeInsets.only(left: 20.0, top: 30.0),
                           child: ElevatedButton(
@@ -235,6 +273,7 @@ class Eve10 extends StatelessWidget {
   }
 }
 
+// 카드안 수정하기 카드 전체를 옆으로 늘렸어야 했다.
 class EventCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -243,73 +282,120 @@ class EventCard extends StatelessWidget {
         // 이벤트 카드 클릭 시 수행할 동작
       },
       child: Container(
-        padding: EdgeInsets.all(15),
         width: 237,
-        height: 255, // 가로 크기 지정
+        height: 280, // 카드의 전체 높이 조정
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(20),
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: Stack(
           children: [
-            Row(
-              children: [
-                Container(
-                  padding: EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: Colors.red,
-                    borderRadius: BorderRadius.circular(15),
+            // 배경 이미지
+          Positioned(
+          left: 8.0, // 약간 오른쪽으로 이동
+          top: 8.0, // 약간 아래쪽으로 이동
+          child: ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: Image.asset(
+                'assets/images/event_image1.png',
+                width: 220,
+                height: 120,
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+            // 날짜 정보와 북마크 아이콘
+            Positioned(
+              top: 17,
+              left: 17,
+              child: Container(
+                padding: EdgeInsets.all(5),
+                decoration: BoxDecoration(
+                  color: Color.fromRGBO(255, 255, 255, 0.7),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Column(
+                  children: [
+                    Text(
+                      '10',
+                      style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      'JUNE',
+                      style: TextStyle(color: Colors.red),
+                    ),
+
+                  ],
+                ),
+              ),
+            ),
+
+            Positioned(
+              top: 10,
+              right: 10,
+              child: Container(
+                padding: EdgeInsets.all(5),
+                decoration: BoxDecoration(
+                  color: Color.fromRGBO(255, 255, 255, 0.7),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Icon(Icons.bookmark_outlined, color: Colors.red, size: 20),
+              ),
+            ),
+            // 제목 및 정보
+            Positioned(
+              top: 145,
+              left: 15,
+              right: 15,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'International Band Mu...',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
                   ),
-                  child: Column(
+                  SizedBox(height: 8),
+                  Row(
                     children: [
-                      // 이미지 삽입
-                      Text(
-                        '10',
-                        style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                      CircleAvatar(
+                        backgroundImage: NetworkImage('https://via.placeholder.com/150'),
+                        radius: 15,
                       ),
+                      SizedBox(width: 5),
+                      CircleAvatar(
+                        backgroundImage: NetworkImage('https://via.placeholder.com/150'),
+                        radius: 15,
+                      ),
+                      SizedBox(width: 5),
+                      CircleAvatar(
+                        backgroundImage: NetworkImage('https://via.placeholder.com/150'),
+                        radius: 15,
+                      ),
+                      SizedBox(width: 5),
                       Text(
-                        'JUNE',
-                        style: TextStyle(color: Colors.white),
+                        '+20 Going',
+                        style: TextStyle(
+                          color: Color.fromRGBO(63, 56, 221, 1),
+                        ),
                       ),
                     ],
                   ),
-                ),
-                SizedBox(width: 16),
-                Expanded(
-                  child: Text(
-                    'International Band Mu...',
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                  SizedBox(height: 10),
+                  Row(
+                    children: [
+                      Icon(Icons.location_on, color: Colors.grey),
+                      SizedBox(width: 5),
+                      Text(
+                        '36 Guild Street London, UK',
+                        style: TextStyle(color: Colors.grey),
+                      ),
+                    ],
                   ),
-                ),
-                Icon(Icons.bookmark_border, color: Colors.black), // 색깔 되도록
-              ],
-            ),
-            SizedBox(height: 44),
-            Row(
-              children: [
-                Icon(Icons.location_on, color: Colors.grey),
-                SizedBox(width: 5),
-                Text('36 Guild Street London, UK'),
-              ],
-            ),
-            SizedBox(height: 10),
-            Row(
-              children: [
-                CircleAvatar(
-                  backgroundImage: NetworkImage('https://via.placeholder.com/150'),
-                  radius: 15,
-                ),
-                CircleAvatar(
-                  backgroundImage: NetworkImage('https://via.placeholder.com/150'),
-                  radius: 15,
-                ),
-                CircleAvatar(
-                    backgroundImage: NetworkImage('https://via.placeholder.com/150'),
-                    radius: 15),
-                SizedBox(width: 5),
-                Text('+20 Going', style: TextStyle(color: Color.fromRGBO(63, 56, 221, 1))),
-              ],
+                ],
+              ),
             ),
           ],
         ),
