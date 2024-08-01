@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+// 나중에 해결할 3가지 챗gpt로 안되는거
 //그림이 확대되서 들어가는 문제
 //얼굴그림 3개가 스택으로 안쌓이는 문제
 // 하단 초대 섹션 그림이 짤리는문제 249
+// 카드 밑에 안들어감
 
 void main() {
   runApp(MyApp());
@@ -93,6 +94,7 @@ class Eve10 extends StatelessWidget {
               ),
             ),
             // 카테고리 버튼
+
             Positioned(
               top: 180,
               left: 0,
@@ -158,6 +160,8 @@ class Eve10 extends StatelessWidget {
                 ),
               ),
             ),
+
+
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -180,6 +184,8 @@ class Eve10 extends StatelessWidget {
                     ],
                   ),
                 ),
+
+
                 SizedBox(height: 20),
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
@@ -314,6 +320,7 @@ class Eve10 extends StatelessWidget {
                     ),
                   ),
                 ),
+
 
 
 
@@ -493,3 +500,4 @@ class EventCard extends StatelessWidget {
     );
   }
 }
+
