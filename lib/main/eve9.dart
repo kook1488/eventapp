@@ -1,49 +1,80 @@
-import 'package:flutter/material.dart'; // 이 줄을 추가하세요.
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Eve9(),
+    );
+  }
+}
 
 class Eve9 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
-        title: Text('Eve9 Page'),
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        leading: Builder(
+          builder: (context) => IconButton(
+            icon: Icon(Icons.menu),
+            onPressed: () {
+              Scaffold.of(context).openDrawer(); // Drawer 열기
+            },
+          ),
+        ),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.notifications),
+            onPressed: () {},
+          ),
+        ],
       ),
       drawer: Drawer(
+        // 슬라이드 메뉴 추가
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
             DrawerHeader(
               decoration: BoxDecoration(
-                color: Colors.blue,
+                color: Colors.white, // 백그라운드 색상
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   CircleAvatar(
-                    backgroundImage: AssetImage('assets/profile_image.jpg'), // 유저의 프로필 이미지
-                    radius: 30,
+                    backgroundImage: AssetImage(
+                        'assets/images/9eve_image1.jpg'), // 유저의 프로필 이미지 경로
+                    radius: 40,
                   ),
                   SizedBox(height: 10),
                   Text(
                     'Ashfak Sayem',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Colors.black,
                       fontSize: 20,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ],
               ),
             ),
             ListTile(
-              leading: Icon(Icons.person),
-              title: Text('My Profile'),
+              leading: Icon(Icons.person, color: Colors.black),
+              title: Text('My Profile', style: TextStyle(color: Colors.black)),
               onTap: () {
                 // My Profile로 이동
               },
             ),
             ListTile(
-              leading: Icon(Icons.message),
-              title: Text('Massage'),
+              leading: Icon(Icons.message, color: Colors.black),
+              title: Text('Message', style: TextStyle(color: Colors.black)),
               trailing: Container(
                 padding: EdgeInsets.all(5),
                 decoration: BoxDecoration(
@@ -53,47 +84,48 @@ class Eve9 extends StatelessWidget {
                 child: Text('3', style: TextStyle(color: Colors.white)),
               ),
               onTap: () {
-                // Massage로 이동
+                // Message로 이동
               },
             ),
             ListTile(
-              leading: Icon(Icons.calendar_today),
-              title: Text('Calendar'),
+              leading: Icon(Icons.calendar_today, color: Colors.black),
+              title: Text('Calendar', style: TextStyle(color: Colors.black)),
               onTap: () {
                 // Calendar로 이동
               },
             ),
             ListTile(
-              leading: Icon(Icons.bookmark),
-              title: Text('Bookmark'),
+              leading: Icon(Icons.bookmark, color: Colors.black),
+              title: Text('Bookmark', style: TextStyle(color: Colors.black)),
               onTap: () {
                 // Bookmark로 이동
               },
             ),
             ListTile(
-              leading: Icon(Icons.mail),
-              title: Text('Contact Us'),
+              leading: Icon(Icons.mail, color: Colors.black),
+              title: Text('Contact Us', style: TextStyle(color: Colors.black)),
               onTap: () {
                 // Contact Us로 이동
               },
             ),
             ListTile(
-              leading: Icon(Icons.settings),
-              title: Text('Settings'),
+              leading: Icon(Icons.settings, color: Colors.black),
+              title: Text('Settings', style: TextStyle(color: Colors.black)),
               onTap: () {
                 // Settings로 이동
               },
             ),
             ListTile(
-              leading: Icon(Icons.help),
-              title: Text('Helps & FAQs'),
+              leading: Icon(Icons.help, color: Colors.black),
+              title:
+                  Text('Helps & FAQs', style: TextStyle(color: Colors.black)),
               onTap: () {
                 // Helps & FAQs로 이동
               },
             ),
             ListTile(
-              leading: Icon(Icons.logout),
-              title: Text('Sign Out'),
+              leading: Icon(Icons.logout, color: Colors.black),
+              title: Text('Sign Out', style: TextStyle(color: Colors.black)),
               onTap: () {
                 // Sign Out 기능
               },
@@ -103,7 +135,7 @@ class Eve9 extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.cyan, // 수정: primary -> backgroundColor
+                  backgroundColor: Colors.cyan,
                   padding: EdgeInsets.symmetric(vertical: 15),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20),
@@ -112,167 +144,46 @@ class Eve9 extends StatelessWidget {
                 onPressed: () {
                   // Upgrade Pro로 이동
                 },
-                child: Text('Upgrade Pro'),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.upgrade, color: Colors.white),
+                    SizedBox(width: 10),
+                    Text('Upgrade Pro', style: TextStyle(color: Colors.white)),
+                  ],
+                ),
               ),
             ),
           ],
         ),
       ),
       body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: Stack(
           children: [
-            Stack(
-              children: [
-                Container(
-                  color: Colors.blue,
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Current Location',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      Text(
-                        'New York, USA',
-                        style: TextStyle(color: Colors.white, fontSize: 24),
-                      ),
-                    ],
-                  ),
-                ),
-                Positioned(
-                  right: 0,
-                  bottom: 0,
-                  child: FloatingActionButton(
-                    onPressed: () {},
-                    child: Icon(Icons.add),
-                  ),
-                ),
-              ],
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                'Upcoming Events',
-                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-              ),
-            ),
-            // 이벤트 리스트 섹션
-            // 첫 번째 이미지와 유사하게 구성
-            Container(
-              height: 200,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: [
-                  EventCard(
-                    date: '10 JUNE',
-                    title: 'International Band Music',
-                    location: '36 Guild Street London, UK',
-                    going: '+20 Going',
-                    image: 'assets/event_image1.jpg',
-                  ),
-                  EventCard(
-                    date: '10 JUNE',
-                    title: 'Jo Malone London’s Mother’s Day Event',
-                    location: 'Radius Gallery London, UK',
-                    going: '+8 Going',
-                    image: 'assets/event_image2.jpg',
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: 20),
-            InviteBanner(),
-            // 두 번째 이미지에 해당하는 섹션
+            // 기존 코드 유지
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.explore),
-            label: 'Explore',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.bookmark),
-            label: 'Saved',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.location_on),
-            label: 'Nearby',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
-          ),
-        ],
+      bottomNavigationBar: Container(
+        height: 70,
+        color: Colors.green,
+        child: BottomNavigationBar(
+          selectedItemColor: Color.fromRGBO(86, 105, 255, 1),
+          unselectedItemColor: Colors.white,
+          items: [
+            BottomNavigationBarItem(
+                icon: Icon(Icons.explore), label: 'Explore'),
+            BottomNavigationBarItem(icon: Icon(Icons.event), label: 'Events'),
+            BottomNavigationBarItem(icon: Icon(Icons.map), label: 'Map'),
+            BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+          ],
+        ),
       ),
-    );
-  }
-}
-
-class EventCard extends StatelessWidget {
-  final String date;
-  final String title;
-  final String location;
-  final String going;
-  final String image;
-
-  EventCard({
-    required this.date,
-    required this.title,
-    required this.location,
-    required this.going,
-    required this.image,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      child: Column(
-        children: [
-          Image.asset(image), // 이벤트 이미지
-          Text(date),
-          Text(title, style: TextStyle(fontWeight: FontWeight.bold)),
-          Row(
-            children: [
-              Icon(Icons.location_on, size: 14),
-              Text(location),
-            ],
-          ),
-          Text(going),
-        ],
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(Icons.add),
       ),
-    );
-  }
-}
-
-class InviteBanner extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.lightBlueAccent,
-      padding: EdgeInsets.all(20),
-      child: Row(
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Invite your friends',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              ),
-              Text('Get \$20 for ticket'),
-            ],
-          ),
-          Spacer(),
-          ElevatedButton(
-            onPressed: () {},
-            child: Text('INVITE'),
-          ),
-        ],
-      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }

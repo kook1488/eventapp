@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:wordapp/main/eve1.dart';
+import 'package:wordapp/main/eve10.dart';
+import 'package:wordapp/main/eve13.dart';
+import 'package:wordapp/main/eve14.dart';
+import 'package:wordapp/main/eve15.dart';
 import 'package:wordapp/main/eve2.dart';
 import 'package:wordapp/main/eve3.dart';
 import 'package:wordapp/main/eve4.dart';
@@ -9,13 +13,9 @@ import 'package:wordapp/main/eve6.dart';
 import 'package:wordapp/main/eve7.dart';
 import 'package:wordapp/main/eve8.dart';
 import 'package:wordapp/main/eve9.dart';
-import 'package:wordapp/main/eve10.dart';
-import 'package:wordapp/main/eve13.dart';
-import 'package:wordapp/main/eve14.dart';
-import 'package:wordapp/main/eve15.dart';
 
 final routers = GoRouter(
-  initialLocation: "/eve9",
+  initialLocation: "/eve10",
   routes: [
     GoRoute(
       path: "/eve1",
@@ -85,7 +85,8 @@ final routers = GoRouter(
   ],
 );
 
-CustomTransitionPage<void> _buildPageWithTransition(GoRouterState state, Widget child) {
+CustomTransitionPage<void> _buildPageWithTransition(
+    GoRouterState state, Widget child) {
   return CustomTransitionPage(
     key: state.pageKey,
     child: child,

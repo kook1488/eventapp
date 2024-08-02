@@ -1,10 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-// 나중에 해결할 3가지 챗gpt로 안되는거
-//그림이 확대되서 들어가는 문제
-//얼굴그림 3개가 스택으로 안쌓이는 문제
-// 하단 초대 섹션 그림이 짤리는문제 249
-// 카드 밑에 안들어감
 
 void main() {
   runApp(MyApp());
@@ -19,21 +14,192 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class Eve10 extends StatelessWidget {
+class Eve10 extends StatefulWidget {
+  @override
+  _Eve10State createState() => _Eve10State();
+}
+
+class _Eve10State extends State<Eve10> with SingleTickerProviderStateMixin {
+  bool isDrawerOpen = false;
+  late AnimationController _animationController;
+
+  @override
+  void initState() {
+    super.initState();
+    _animationController = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: 300),
+    );
+  }
+
+  void toggleDrawer() {
+    setState(() {
+      if (isDrawerOpen) {
+        _animationController.reverse(); // Drawer가 열려 있을 때, 닫음
+      } else {
+        _animationController.forward(); // Drawer가 닫혀 있을 때, 열음
+      }
+      isDrawerOpen = !isDrawerOpen; // 상태를 반전시킴
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    return Scaffold(
+      body: Stack(
+        children: [
+          // Drawer
+          buildDrawer(),
+
+          // Main content with animation
+          AnimatedContainer(
+            duration: Duration(milliseconds: 300),
+            transform: Matrix4.translationValues(
+              isDrawerOpen ? 250 : 0, // 메뉴가 열리면 250만큼 이동, 닫히면 원래 위치로
+              0,
+              0,
+            ),
+            child: GestureDetector(
+              onTap: () {
+                if (isDrawerOpen) {
+                  toggleDrawer(); // 화면을 탭하면 Drawer가 닫히도록 함
+                }
+              },
+              child: buildMainContent(), // 실제 화면 내용
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget buildDrawer() {
+    return Container(
+      width: 250,
+      color: Colors.white,
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: <Widget>[
+          DrawerHeader(
+            decoration: BoxDecoration(
+              color: Colors.white,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CircleAvatar(
+                  backgroundImage: AssetImage(
+                      'assets/images/9eve_image1.png'), // 유저의 프로필 이미지 경로
+                  radius: 40,
+                ),
+                SizedBox(height: 10),
+                Text(
+                  'Ashfak Sayem',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          ListTile(
+            leading: Icon(Icons.person, color: Colors.black),
+            title: Text('My Profile', style: TextStyle(color: Colors.black)),
+            onTap: () {},
+          ),
+          ListTile(
+            leading: Icon(Icons.message, color: Colors.black),
+            title: Text('Message', style: TextStyle(color: Colors.black)),
+            trailing: Container(
+              padding: EdgeInsets.all(5),
+              decoration: BoxDecoration(
+                color: Colors.orange,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Text('3', style: TextStyle(color: Colors.white)),
+            ),
+            onTap: () {},
+          ),
+          ListTile(
+            leading: Icon(Icons.calendar_today, color: Colors.black),
+            title: Text('Calendar', style: TextStyle(color: Colors.black)),
+            onTap: () {},
+          ),
+          ListTile(
+            leading: Icon(Icons.bookmark, color: Colors.black),
+            title: Text('Bookmark', style: TextStyle(color: Colors.black)),
+            onTap: () {},
+          ),
+          ListTile(
+            leading: Icon(Icons.mail, color: Colors.black),
+            title: Text('Contact Us', style: TextStyle(color: Colors.black)),
+            onTap: () {},
+          ),
+          ListTile(
+            leading: Icon(Icons.settings, color: Colors.black),
+            title: Text('Settings', style: TextStyle(color: Colors.black)),
+            onTap: () {},
+          ),
+          ListTile(
+            leading: Icon(Icons.help, color: Colors.black),
+            title: Text('Helps & FAQs', style: TextStyle(color: Colors.black)),
+            onTap: () {},
+          ),
+          ListTile(
+            leading: Icon(Icons.logout, color: Colors.black),
+            title: Text('Sign Out', style: TextStyle(color: Colors.black)),
+            onTap: () {},
+          ),
+          Spacer(),
+          Padding(
+            padding: const EdgeInsets.only(top: 130.0), // 버튼 위치를 하단으로 내리기
+            child: Container(
+              width: 50, // 버튼의 너비를 200으로 설정 (원하는 값으로 변경 가능)
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color.fromRGBO(0, 248, 255, 1), // 버튼 배경색
+                  foregroundColor: Color.fromRGBO(0, 248, 255, 0.1), // 텍스트 색상
+                  padding: EdgeInsets.zero, // 버튼 높이 조정
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10), // 둥근 모서리
+                  ),
+                ),
+                onPressed: () {},
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.upgrade, color: Colors.white), // 아이콘 색상을 흰색으로 설정
+                    SizedBox(width: 20),
+                    Text('Upgrade Pro',
+                        style:
+                            TextStyle(color: Colors.white)), // 텍스트 색상을 흰색으로 설정
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget buildMainContent() {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
-          icon: Icon(Icons.menu),
-          onPressed: () {},
+          icon: Icon(Icons.menu,
+              color: Colors.white, size: 40), // 아이콘 흰색으로 하고 크기 키우기
+          onPressed: toggleDrawer,
         ),
         actions: [
           IconButton(
-            icon: Icon(Icons.notifications),
+            icon: Icon(Icons.notifications,
+                color: Colors.white, size: 30), // 아이콘 흰색으로 하고 크기 키우기
             onPressed: () {},
           ),
         ],
@@ -41,7 +207,7 @@ class Eve10 extends StatelessWidget {
       body: SingleChildScrollView(
         child: Stack(
           children: [
-            // 상단 배경
+            // 기존 코드 유지
             Container(
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 40),
               decoration: BoxDecoration(
@@ -106,53 +272,65 @@ class Eve10 extends StatelessWidget {
                   children: [
                     SizedBox(width: 28),
                     ElevatedButton.icon(
-                      icon: Icon(Icons.sports_basketball_sharp, color: Colors.white),
-                      label: Text('Sports', style: TextStyle(color: Colors.white)),
+                      icon: Icon(Icons.sports_basketball_sharp,
+                          color: Colors.white),
+                      label:
+                          Text('Sports', style: TextStyle(color: Colors.white)),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.deepOrangeAccent,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(25),
                         ),
-                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                        padding:
+                            EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                       ),
                       onPressed: () {},
                     ),
                     SizedBox(width: 13),
                     ElevatedButton.icon(
-                      icon: Icon(CupertinoIcons.music_note_2, color: Colors.white),
-                      label: Text('Music', style: TextStyle(color: Colors.white)),
+                      icon: Icon(CupertinoIcons.music_note_2,
+                          color: Colors.white),
+                      label:
+                          Text('Music', style: TextStyle(color: Colors.white)),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.orangeAccent,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(25),
                         ),
-                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                        padding:
+                            EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                       ),
                       onPressed: () {},
                     ),
                     SizedBox(width: 13),
                     ElevatedButton.icon(
-                      icon: Icon(Icons.construction_outlined, color: Colors.white),
-                      label: Text('Food', style: TextStyle(color: Colors.white)),
+                      icon: Icon(Icons.construction_outlined,
+                          color: Colors.white),
+                      label:
+                          Text('Food', style: TextStyle(color: Colors.white)),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Color(0xFF29D697),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(25),
                         ),
-                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 22),
+                        padding:
+                            EdgeInsets.symmetric(vertical: 10, horizontal: 22),
                       ),
                       onPressed: () {},
                     ),
                     SizedBox(width: 13),
                     ElevatedButton.icon(
-                      icon: Icon(Icons.local_movies_rounded, color: Colors.white),
-                      label: Text('Movie', style: TextStyle(color: Colors.white)),
+                      icon:
+                          Icon(Icons.local_movies_rounded, color: Colors.white),
+                      label:
+                          Text('Movie', style: TextStyle(color: Colors.white)),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.cyan,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(25),
                         ),
-                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+                        padding:
+                            EdgeInsets.symmetric(vertical: 10, horizontal: 25),
                       ),
                       onPressed: () {},
                     ),
@@ -160,7 +338,6 @@ class Eve10 extends StatelessWidget {
                 ),
               ),
             ),
-
 
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -173,7 +350,8 @@ class Eve10 extends StatelessWidget {
                     children: [
                       Text(
                         'Upcoming Events',
-                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.w500),
                       ),
                       Row(
                         children: [
@@ -184,7 +362,6 @@ class Eve10 extends StatelessWidget {
                     ],
                   ),
                 ),
-
 
                 SizedBox(height: 20),
                 SingleChildScrollView(
@@ -205,10 +382,10 @@ class Eve10 extends StatelessWidget {
                         ],
                         goingCount: '+20 Going',
                       ),
-
                       SizedBox(width: 16),
                       EventCard(
-                        imagePath: 'assets/images/event_image5.png', // 새로운 이미지 경로
+                        imagePath:
+                            'assets/images/event_image5.png', // 새로운 이미지 경로
                         date: '10',
                         month: 'JUNE',
                         title: "Jo malone london's...",
@@ -220,10 +397,10 @@ class Eve10 extends StatelessWidget {
                         ],
                         goingCount: '+20 Going',
                       ),
-
                       SizedBox(width: 16),
                       EventCard(
-                        imagePath: 'assets/images/event_image6.png', // 새로운 이미지 경로
+                        imagePath:
+                            'assets/images/event_image6.png', // 새로운 이미지 경로
                         date: '10',
                         month: 'JUNE',
                         title: "International gala...",
@@ -235,10 +412,10 @@ class Eve10 extends StatelessWidget {
                         ],
                         goingCount: '+15 Going',
                       ),
-
                       SizedBox(width: 16),
                       EventCard(
-                        imagePath: 'assets/images/event_image3.png', // 새로운 이미지 경로
+                        imagePath:
+                            'assets/images/event_image3.png', // 새로운 이미지 경로
                         date: '10',
                         month: 'JUNE',
                         title: "Women's leadership...",
@@ -250,13 +427,11 @@ class Eve10 extends StatelessWidget {
                         ],
                         goingCount: '+10 Going',
                       ),
-
                     ],
                   ),
                 ),
 
-
-                // 하단 초대 섹션 그림이 짤리는문제 249
+                // 하단 초대 섹션 그림이 짤리는 문제
                 Padding(
                   padding: EdgeInsets.all(20),
                   child: Container(
@@ -302,10 +477,12 @@ class Eve10 extends StatelessWidget {
                                   ElevatedButton(
                                     onPressed: () {},
                                     style: ElevatedButton.styleFrom(
-                                      backgroundColor: Color.fromRGBO(0, 248, 255, 1), // 수정된 부분
+                                      backgroundColor: Color.fromRGBO(
+                                          0, 248, 255, 1), // 수정된 부분
                                       foregroundColor: Colors.white, // 텍스트 색상
                                       shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(8), // borderRadius 줄이기
+                                        borderRadius: BorderRadius.circular(
+                                            8), // borderRadius 줄이기
                                       ),
                                     ),
                                     child: Text('INVITE'),
@@ -320,11 +497,6 @@ class Eve10 extends StatelessWidget {
                     ),
                   ),
                 ),
-
-
-
-
-
               ],
             ),
           ],
@@ -335,18 +507,42 @@ class Eve10 extends StatelessWidget {
         color: Colors.green,
         child: BottomNavigationBar(
           selectedItemColor: Color.fromRGBO(86, 105, 255, 1),
-          unselectedItemColor: Colors.white,
+          unselectedItemColor: Colors.grey,
           items: [
-            BottomNavigationBarItem(icon: Icon(Icons.explore), label: 'Explore'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.explore), label: 'Explore'),
             BottomNavigationBarItem(icon: Icon(Icons.event), label: 'Events'),
             BottomNavigationBarItem(icon: Icon(Icons.map), label: 'Map'),
             BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: Icon(Icons.add),
+      floatingActionButton: Stack(
+        alignment: Alignment.center,
+        children: [
+          Container(
+            width: 10, // 외곽 반짝이는 효과 크기
+            height: 10,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              gradient: RadialGradient(
+                colors: [
+                  Colors.blue.withOpacity(0.5),
+                  Colors.blue.withOpacity(0.1),
+                ],
+                stops: [0.5, 1.0],
+              ),
+            ),
+          ),
+          FloatingActionButton(
+            onPressed: () {},
+            backgroundColor: Colors.blueAccent,
+            child: Icon(Icons.add, size: 30, color: Colors.white),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(30),
+            ),
+          ),
+        ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
@@ -442,7 +638,8 @@ class EventCard extends StatelessWidget {
                   color: Color.fromRGBO(255, 255, 255, 0.7),
                   borderRadius: BorderRadius.circular(8),
                 ),
-                child: Icon(Icons.bookmark_outlined, color: Colors.red, size: 20),
+                child:
+                    Icon(Icons.bookmark_outlined, color: Colors.red, size: 20),
               ),
             ),
             // 제목 및 정보
@@ -500,4 +697,3 @@ class EventCard extends StatelessWidget {
     );
   }
 }
-
