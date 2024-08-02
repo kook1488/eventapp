@@ -8,13 +8,14 @@ import 'package:wordapp/main/eve5.dart';
 import 'package:wordapp/main/eve6.dart';
 import 'package:wordapp/main/eve7.dart';
 import 'package:wordapp/main/eve8.dart';
+import 'package:wordapp/main/eve9.dart';
 import 'package:wordapp/main/eve10.dart';
 import 'package:wordapp/main/eve13.dart';
 import 'package:wordapp/main/eve14.dart';
 import 'package:wordapp/main/eve15.dart';
 
 final routers = GoRouter(
-  initialLocation: "/eve10",
+  initialLocation: "/eve9",
   routes: [
     GoRoute(
       path: "/eve1",
@@ -55,6 +56,11 @@ final routers = GoRouter(
       path: "/eve8",
       name: "eve8",
       pageBuilder: (context, state) => _buildPageWithTransition(state, Eve8()),
+    ),
+    GoRoute(
+      path: "/eve9",
+      name: "eve9",
+      pageBuilder: (context, state) => _buildPageWithTransition(state, Eve9()),
     ),
     GoRoute(
       path: "/eve10",

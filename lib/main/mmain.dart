@@ -5,7 +5,6 @@ import 'package:wordapp/sub/router.dart';
 void main() {
   runApp(MyApp());
 }
-//asdljfnbasiodlfhnwopi
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -13,7 +12,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      debugShowCheckedModeBanner: false, // 디버그 표시 없애기
       routerConfig: routers,
+
     );
   }
 }

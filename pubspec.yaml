@@ -21,6 +21,8 @@ dependencies:
   sqflite: 2.3.3+1
   hive: ^2.2.3
 
+  rxdart: ^0.28.0
+
 
 
 
